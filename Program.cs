@@ -25,9 +25,9 @@ namespace LINQT
                 "ben",
                 "ik"
             };
-            int[] mijnIntArray = {5,6,4,7,8,15,15,2,1,1,1,1,100,201,300,3};
+            int[] mijnIntArray = { 5, 6, 4, 7, 8, 15, 15, 2, 1, 1, 1, 1, 100, 201, 300, 3 };
 
-            List<int> intList = new List<int>(){ 5, 6, 4, 7, 8, 15, 15, 2, 1, 1, 1, 1, 100, 201, 300, 3 };
+            List<int> intList = new List<int>() { 5, 6, 4, 7, 8, 15, 15, 2, 1, 1, 1, 1, 100, 201, 300, 3 };
             List<Persoon> personenlijst = new List<Persoon>(){
                 new Persoon("Mike","mikelson", 18),
                 new Persoon("Laurens", "laureen",18),
@@ -40,7 +40,7 @@ namespace LINQT
 
 
             };
-            
+
             //1. Maak een query waarmee je een array met strings print. 
             var oefening1 = mijnStringArray.Select(str => str);
 
@@ -74,7 +74,7 @@ namespace LINQT
 
             //4. Maak een query waarmee je het kwadraat van elk getal in een array print, als dat getal na de bewerking groter is dan 50.
             Console.WriteLine("oefening 4:");
-            var oefening4 = mijnIntArray.Select(s => Math.Pow(s,2)).Where(s => s > 50);
+            var oefening4 = mijnIntArray.Select(s => Math.Pow(s, 2)).Where(s => s > 50);
             foreach (var integer in oefening4)
             {
                 Console.WriteLine(integer);
@@ -175,7 +175,7 @@ namespace LINQT
             var oefening16 = mijnStringArray.Join(mijnStringArray2,
                 s1 => s1,
                 s2 => s2,
-                (r1,r2) => r1);
+                (r1, r2) => r1);
             foreach (var item in oefening16)
             {
                 Console.WriteLine($"{item}");
@@ -206,7 +206,7 @@ namespace LINQT
 
             //19. Maak een query waarmee je voor elk object in een list een nieuw object maakt met de voornaam en achternaam, print deze
             Console.WriteLine("oefening 19:");
-            var oefening19 = personenlijst.Select(s => new {s.voornaam, s.achternaam});
+            var oefening19 = personenlijst.Select(s => new { s.voornaam, s.achternaam });
             foreach (var item in oefening19)
             {
                 Console.WriteLine($"{item.voornaam} {item.achternaam}");
@@ -215,12 +215,13 @@ namespace LINQT
 
             //20. Maak een query waarbij je de indexen uit een List print waarvan elk getal groter is dan een ingegeven waarde. (Dus bij [10, 20, 25, 30, 12] print je 2 en 3 als je 24 ingeeft)
             Console.WriteLine("oefening 20:");
-            int ingegevenint = 1;
-            var oefening20 = intList.Select((s, index) => new{s,index}).Where(s => s.s > ingegevenint).Select(i =>i.index);
+            int ingegevenint = 15;
+            Console.WriteLine("ingegevenint:" + ingegevenint);
+            var oefening20 = intList.Select((s, index) => new { s, index }).Where(s => s.s > ingegevenint);
 
             foreach (var item in oefening20)
             {
-                Console.WriteLine($"{item}");
+                Console.WriteLine($"{item.index}: {item.s}");
             }
 
             Console.WriteLine();
@@ -244,7 +245,6 @@ namespace LINQT
                 Console.Write(item + ' ');
             }
 
-
             Console.ReadLine();
         }
 
@@ -252,7 +252,7 @@ namespace LINQT
 
     class Persoon
     {
-        public string voornaam { get; set;}
+        public string voornaam { get; set; }
         public string achternaam { get; set; }
         public int leeftijd { get; set; }
 
